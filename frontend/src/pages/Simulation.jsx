@@ -15,13 +15,14 @@ import {
 
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import BoltIcon from "@mui/icons-material/Bolt";
-import ThermostatIcon from "@mui/icons-material/Thermostat";
-import SavingsIcon from "@mui/icons-material/Savings";
+import DescriptionIcon from "@mui/icons-material/Description";
+import TableRowsIcon from "@mui/icons-material/TableRows";
+import ViewColumnIcon from "@mui/icons-material/ViewColumn";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 
 import DashboardLayout from "../layouts/DashboardLayout";
 import { runSimulation } from "../services/simulationService";
+import ClosedLoopReport from "../components/ClosedLoopReport";
 
 function Simulation() {
 
@@ -48,6 +49,8 @@ function Simulation() {
     setLoading(false);
 
   };
+
+  const simResults = result?.results;
 
   return (
 
@@ -172,7 +175,7 @@ function Simulation() {
 
       {
 
-        result && (
+        simResults && (
 
           <>
 
@@ -194,7 +197,7 @@ function Simulation() {
                   }}
                 >
 
-                  <BoltIcon
+                  <DescriptionIcon
                     sx={{
                       fontSize: 45,
                       color: "#2563EB",
@@ -202,15 +205,16 @@ function Simulation() {
                   />
 
                   <Typography
-                    variant="h4"
+                    variant="h6"
                     fontWeight={700}
                     mt={2}
+                    noWrap
                   >
-                    {result.energy_prediction}
+                    {simResults.file}
                   </Typography>
 
                   <Typography color="text.secondary">
-                    Energy Prediction
+                    Output File
                   </Typography>
 
                 </Paper>
@@ -229,7 +233,7 @@ function Simulation() {
                   }}
                 >
 
-                  <ThermostatIcon
+                  <TableRowsIcon
                     sx={{
                       fontSize: 45,
                       color: "#22C55E",
@@ -241,11 +245,11 @@ function Simulation() {
                     fontWeight={700}
                     mt={2}
                   >
-                    {result.comfort_score}%
+                    {simResults.rows}
                   </Typography>
 
                   <Typography color="text.secondary">
-                    Comfort Score
+                    Rows Simulated
                   </Typography>
 
                 </Paper>
@@ -264,7 +268,7 @@ function Simulation() {
                   }}
                 >
 
-                  <SavingsIcon
+                  <ViewColumnIcon
                     sx={{
                       fontSize: 45,
                       color: "#F59E0B",
@@ -276,11 +280,11 @@ function Simulation() {
                     fontWeight={700}
                     mt={2}
                   >
-                    {result.expected_savings}%
+                    {simResults.columns?.length ?? 0}
                   </Typography>
 
                   <Typography color="text.secondary">
-                    Expected Savings
+                    Output Variables
                   </Typography>
 
                 </Paper>
@@ -332,7 +336,9 @@ function Simulation() {
                 lineHeight={2}
                 color="text.secondary"
               >
-                {result.summary}
+                EnergyPlus completed a full annual simulation,
+                producing {simResults.rows} hourly rows across{" "}
+                {simResults.columns?.length ?? 0} output variables.
               </Typography>
 
             </Paper>
@@ -342,6 +348,8 @@ function Simulation() {
         )
 
       }
+
+      <ClosedLoopReport />
 
     </DashboardLayout>
 

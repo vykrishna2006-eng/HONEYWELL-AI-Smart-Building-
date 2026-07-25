@@ -9,24 +9,24 @@
     "applied_cooling_setpoint_c": "Baseline",
     "applied_heating_setpoint_c": "Baseline",
     "decision": {
-      "cooling_setpoint_c": 24.5,
+      "cooling_setpoint_c": 24.0,
       "heating_setpoint_c": 20.0,
-      "reason": "Widening the thermostat deadband by setting the occupied heating setpoint to 20.0\u00b0C and cooling setpoint to 24.5\u00b0C significantly reduces both heating and cooling energy usage while maintaining comfort within the required bounds."
+      "reason": "Widen the thermal comfort deadband to 20.0\u00b0C heating and 24.0\u00b0C cooling to significantly reduce both space heating demand and premature VAV cooling loads."
     }
   },
   {
     "iteration": 2,
     "energy": {
-      "total_cooling_kwh": 3239.74,
-      "total_heating_kwh": 3098.9,
-      "total_energy_kwh": 6338.64
+      "total_cooling_kwh": 3631.88,
+      "total_heating_kwh": 2932.35,
+      "total_energy_kwh": 6564.23
     },
-    "applied_cooling_setpoint_c": 24.5,
+    "applied_cooling_setpoint_c": 24.0,
     "applied_heating_setpoint_c": 20.0,
     "decision": {
       "cooling_setpoint_c": 24.5,
       "heating_setpoint_c": 20.0,
-      "reason": "Expanding the deadband by raising cooling setpoint to 24.5\u00b0C and maintaining heating setpoint at 20.0\u00b0C minimizes concurrent heating/cooling demand while preserving occupant thermal comfort."
+      "reason": "Widening the thermostat deadband by raising the cooling setpoint to 24.5\u00b0C and lowering the heating setpoint to 20.0\u00b0C significantly reduces chiller and boiler energy consumption while maintaining comfortable conditions within allowable limits."
     }
   }
 ]
