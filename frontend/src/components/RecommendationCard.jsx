@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   Paper,
   Typography,
-  Chip,
   Box,
   Stack,
   Divider,
@@ -13,8 +12,6 @@ import {
 
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SavingsIcon from "@mui/icons-material/Savings";
-import ThermostatIcon from "@mui/icons-material/Thermostat";
-import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 
 import { getLatestRecommendation } from "../services/analyticsService";
@@ -66,14 +63,6 @@ function RecommendationCard() {
     );
 
   }
-
-  const priorityColor = {
-
-    High: "error",
-    Medium: "warning",
-    Low: "success",
-
-  }[recommendation.priority] || "primary";
 
   return (
 
@@ -133,20 +122,6 @@ function RecommendationCard() {
 
         </Stack>
 
-        <Chip
-
-          icon={<PriorityHighIcon />}
-
-          label={recommendation.priority}
-
-          color={priorityColor}
-
-          sx={{
-            fontWeight: 700,
-          }}
-
-        />
-
       </Stack>
 
       <Divider sx={{ my: 3 }} />
@@ -181,7 +156,7 @@ function RecommendationCard() {
               lineHeight: 1.8,
             }}
           >
-            {recommendation.recommendation}
+            {recommendation.reason}
           </Typography>
 
         </Stack>
@@ -235,7 +210,7 @@ function RecommendationCard() {
                 fontWeight={700}
                 color="#16A34A"
               >
-                {recommendation.energy_saving}%
+                {recommendation.expected_savings}%
               </Typography>
 
             </Box>
@@ -260,19 +235,12 @@ function RecommendationCard() {
             alignItems="center"
           >
 
-            <ThermostatIcon
-              sx={{
-                color: "#F59E0B",
-                fontSize: 40,
-              }}
-            />
-
             <Box>
 
               <Typography
                 color="text.secondary"
               >
-                Comfort Score
+                Recommended Setpoint
               </Typography>
 
               <Typography
@@ -280,7 +248,7 @@ function RecommendationCard() {
                 fontWeight={700}
                 color="#EA580C"
               >
-                {recommendation.comfort_score}%
+                {recommendation.recommended_setpoint}°C
               </Typography>
 
             </Box>

@@ -16,6 +16,7 @@ from database.crud.recommendation_crud import (
 
 from ml.predict import Predictor
 from ml.optimization.optimizer import Optimizer
+from datetime import datetime
 
 
 class MLPredictionService:
@@ -133,3 +134,66 @@ class MLPredictionService:
                 status_code=500,
                 detail=str(e),
             )
+
+    # =============================================
+    # Simplified Prediction (5-field input)
+    # =============================================
+
+    def predict_simple(
+        self,
+        db: Session,
+        simple_data: dict,
+    ) -> dict:
+        """
+        Accepts a simplified 5-field input and fills in
+        the rest with sensible defaults before running
+        the full prediction pipeline.
+        """
+
+        now = datetime.now()
+        month = now.month
+
+        if month in (12, 1, 2):
+            season = "Winter"
+        elif month in (3, 4, 5):
+            season = "Spring"
+        elif month in (6, 7, 8):
+            season = "Summer"
+        else:
+            season = "Autumn"
+
+        is_weekend = 1 if now.weekday() >= 5 else 0
+
+        full_data = {
+            "sensor_id": simple_data.get("sensor_id", 1),
+            "Indoor_Temperature_C": simple_data["temperature"],
+            "Outdoor_Temperature_C": simple_data["temperature"] - 5,
+            "Humidity_Percent": simple_data["humidity"],
+            "CO2_ppm": simple_data["co2"],
+            "Occupancy": simple_data["occupancy"],
+            "HVAC_Setpoint_C": simple_data["hvac_temp"],
+            "Lighting_Level_Percent": 70,
+            "Equipment_Load_kW": 5,
+            "Solar_Radiation_Wm2": 200,
+            "Wind_Speed_mps": 3,
+            "Electricity_Price_per_kWh": 0.15,
+            "Renewable_Generation_kWh": 0,
+            "Floor": 1,
+            "Hour": now.hour,
+            "Day": now.day,
+            "Month": now.month,
+            "Year": now.year,
+            "DayOfWeek": now.weekday(),
+            "WeekOfYear": now.isocalendar()[1],
+            "Quarter": (now.month - 1) // 3 + 1,
+            "IsWeekend": is_weekend,
+            "Building_ID": "BLDG_1",
+            "Zone": "ZONE_1",
+            "Room_ID": "ROOM_1",
+            "Day_Type": "Weekend" if is_weekend else "Weekday",
+            "Season": season,
+            "HVAC_Status": "ON",
+            "HVAC_Mode": "AUTO",
+        }
+
+        return self.predict(db=db, sensor_data=full_data)

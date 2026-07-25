@@ -1938,7 +1938,7 @@
     Until: 24:00,22.2,       !- Field 6
     For: WeekDays,           !- Field 8
     Until: 6:00,16.7,        !- Field 9
-    Until: 20:00,22.2,       !- Field 11
+    Until: 20:00,20.0,       !- Field 11
     Until: 24:00,16.7,       !- Field 13
     For: WeekEnds Holiday,   !- Field 15
     Until: 24:00,16.7,       !- Field 16
@@ -1962,7 +1962,7 @@
     Until: 24:00,29.4,       !- Field 6
     For: WeekDays,           !- Field 8
     Until: 6:00,29.4,        !- Field 9
-    Until: 20:00,23.9,       !- Field 11
+    Until: 20:00,24.0,       !- Field 11
     Until: 24:00,29.4,       !- Field 13
     For: WeekEnds Holiday,   !- Field 15
     Until: 24:00,29.4,       !- Field 16

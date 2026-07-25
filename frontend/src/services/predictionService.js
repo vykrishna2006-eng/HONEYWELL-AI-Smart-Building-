@@ -2,7 +2,7 @@ import api from "../api/api";
 
 // ML Prediction
 export const predict = async (data) => {
-  const response = await api.post("/ml/predict", data);
+  const response = await api.post("/ml/predict-simple", data);
   return response.data;
 };
 

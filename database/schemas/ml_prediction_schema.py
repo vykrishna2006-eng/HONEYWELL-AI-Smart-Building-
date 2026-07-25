@@ -49,6 +49,20 @@ class MLPredictionRequest(BaseModel):
 
 
 # =====================================================
+# Simplified Request Schema
+# =====================================================
+
+class SimplePredictionRequest(BaseModel):
+
+    sensor_id: int = 1
+    temperature: float
+    humidity: float
+    co2: float
+    occupancy: int
+    hvac_temp: float
+
+
+# =====================================================
 # Response Schema
 # =====================================================
 

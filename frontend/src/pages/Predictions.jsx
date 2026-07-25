@@ -192,17 +192,31 @@ function Predictions() {
 
           <Typography mt={2}>
             <strong>Energy Consumption:</strong>{" "}
-            {result.energy_prediction} kWh
+            {result.predicted_energy_kWh} kWh
           </Typography>
 
           <Typography mt={1}>
             <strong>Comfort Score:</strong>{" "}
-            {result.comfort_score}%
+            {result.predicted_comfort_score}%
           </Typography>
 
           <Typography mt={1}>
-            <strong>Recommendation:</strong>{" "}
-            {result.recommendation}
+            <strong>Recommended HVAC Setpoint:</strong>{" "}
+            {result.recommended_hvac_setpoint}°C
+          </Typography>
+
+          <Typography mt={1}>
+            <strong>Expected Savings:</strong>{" "}
+            {result.expected_energy_saving_percent}%
+          </Typography>
+
+          <Typography mt={1}>
+            <strong>Recommendations:</strong>
+            <ul>
+              {result.recommendations?.map((rec, i) => (
+                <li key={i}>{rec}</li>
+              ))}
+            </ul>
           </Typography>
         </Paper>
       )}
