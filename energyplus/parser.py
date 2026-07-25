@@ -5,12 +5,12 @@ OUTPUT_DIR = Path(__file__).parent / "output"
 
 
 def get_csv_file():
-    csv_files = list(OUTPUT_DIR.glob("*.csv"))
+    target = OUTPUT_DIR / "eplusout.csv"
 
-    if not csv_files:
-        return None
+    if target.exists():
+        return target
 
-    return csv_files[0]
+    return None
 
 
 def parse_results():

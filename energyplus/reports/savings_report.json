@@ -1,0 +1,32 @@
+[
+  {
+    "iteration": 1,
+    "energy": {
+      "total_cooling_kwh": 3631.88,
+      "total_heating_kwh": 2932.35,
+      "total_energy_kwh": 6564.23
+    },
+    "applied_cooling_setpoint_c": "Baseline",
+    "applied_heating_setpoint_c": "Baseline",
+    "decision": {
+      "cooling_setpoint_c": 24.5,
+      "heating_setpoint_c": 20.0,
+      "reason": "Widening the thermostat deadband by setting the occupied heating setpoint to 20.0\u00b0C and cooling setpoint to 24.5\u00b0C significantly reduces both heating and cooling energy usage while maintaining comfort within the required bounds."
+    }
+  },
+  {
+    "iteration": 2,
+    "energy": {
+      "total_cooling_kwh": 3239.74,
+      "total_heating_kwh": 3098.9,
+      "total_energy_kwh": 6338.64
+    },
+    "applied_cooling_setpoint_c": 24.5,
+    "applied_heating_setpoint_c": 20.0,
+    "decision": {
+      "cooling_setpoint_c": 24.5,
+      "heating_setpoint_c": 20.0,
+      "reason": "Expanding the deadband by raising cooling setpoint to 24.5\u00b0C and maintaining heating setpoint at 20.0\u00b0C minimizes concurrent heating/cooling demand while preserving occupant thermal comfort."
+    }
+  }
+]

@@ -12,13 +12,14 @@ def run_energyplus():
     OUTPUT_DIR.mkdir(exist_ok=True)
 
     command = [
-        ENERGYPLUS_EXE,
-        "-w",
-        str(WEATHER_FILE),
-        "-d",
-        str(OUTPUT_DIR),
-        str(IDF_FILE),
-    ]
+    ENERGYPLUS_EXE,
+    "-w",
+    str(WEATHER_FILE),
+    "-d",
+    str(OUTPUT_DIR),
+    "-r",
+    str(IDF_FILE),
+]
 
     print("Running EnergyPlus...")
     print(command)
