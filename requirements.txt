@@ -30,9 +30,12 @@ matplotlib==3.10.5
 plotly==6.3.0
 
 # -----------------------------
-# EnergyPlus
+# EnergyPlus Python Bridge (Req 1)
+# eppy: IDF file editing via Python (no regex)
+# pythermalcomfort: PMV/PPD thermal comfort (ISO 7730)
 # -----------------------------
-
+eppy==0.5.65
+pythermalcomfort==2.10.0
 
 # -----------------------------
 # Google Gemini
@@ -40,8 +43,10 @@ plotly==6.3.0
 google-genai==1.29.0
 
 # -----------------------------
-# MCP
+# MCP Server (Req 2)
+# fastmcp: Model Context Protocol server
 # -----------------------------
+fastmcp==2.10.1
 
 
 # -----------------------------

@@ -1,10 +1,11 @@
 [
   {
     "iteration": 1,
+    "timestamp": "2026-07-26T16:27:29.412449+00:00",
     "energy": {
+      "total_energy_kwh": 6564.23,
       "total_cooling_kwh": 3631.88,
-      "total_heating_kwh": 2932.35,
-      "total_energy_kwh": 6564.23
+      "total_heating_kwh": 2932.35
     },
     "comfort": {
       "pmv": -0.81,
@@ -16,29 +17,40 @@
     },
     "occupancy": 2.94,
     "outdoor_temperature": 13.79,
+    "indoor_temperature": 21.75,
+    "humidity": 50.92,
     "peak_demand": 3.79,
     "carbon_intensity": 420,
+    "solar_radiation": 201.16,
+    "wind_speed": 4.67,
     "applied_cooling_setpoint_c": "Baseline",
     "applied_heating_setpoint_c": "Baseline",
     "decision": {
-      "cooling_setpoint_c": 21.75,
-      "heating_setpoint_c": 4.5,
-      "lighting_action": "...",
-      "ventilation_action": "...",
-      "equipment_schedule": "...",
-      "reason": "..."
+      "cooling_setpoint_c": 25.5,
+      "heating_setpoint_c": 18.5,
+      "lighting_action": "Reduce lighting by 20% in unoccupied zones",
+      "ventilation_action": "Maintain minimum ventilation rate",
+      "equipment_schedule": "Delay non-essential equipment start by 30 min",
+      "reason": "Occupancy is low (<10%), setpoints are reduced to save energy. | System flags: PMV=-0.81 is too cold (target \u2265 -0.5); PPD=18.8% exceeds 10.0% threshold; Grid carbon intensity=420 gCO\u2082/kWh \u2014 favour energy saving; Occupancy=2.9% is low \u2014 reduce lighting & HVAC",
+      "flags": [
+        "PMV=-0.81 is too cold (target \u2265 -0.5)",
+        "PPD=18.8% exceeds 10.0% threshold",
+        "Grid carbon intensity=420 gCO\u2082/kWh \u2014 favour energy saving",
+        "Occupancy=2.9% is low \u2014 reduce lighting & HVAC"
+      ]
     }
   },
   {
     "iteration": 2,
+    "timestamp": "2026-07-26T16:29:00.103524+00:00",
     "energy": {
-      "total_cooling_kwh": 5646.3,
-      "total_heating_kwh": 871.86,
-      "total_energy_kwh": 6518.17
+      "total_energy_kwh": 4533.84,
+      "total_cooling_kwh": 2694.58,
+      "total_heating_kwh": 1839.26
     },
     "comfort": {
-      "pmv": -0.94,
-      "ppd": 23.8
+      "pmv": -0.76,
+      "ppd": 17.2
     },
     "iaq": {
       "co2": null,
@@ -46,17 +58,27 @@
     },
     "occupancy": 2.94,
     "outdoor_temperature": 13.79,
-    "peak_demand": 4.59,
+    "indoor_temperature": 21.93,
+    "humidity": 51.68,
+    "peak_demand": 2.78,
     "carbon_intensity": 420,
-    "applied_cooling_setpoint_c": 21.75,
-    "applied_heating_setpoint_c": 4.5,
+    "solar_radiation": 201.16,
+    "wind_speed": 4.67,
+    "applied_cooling_setpoint_c": 25.5,
+    "applied_heating_setpoint_c": 18.5,
     "decision": {
-      "cooling_setpoint_c": 16.0,
-      "heating_setpoint_c": 21.26329354,
-      "lighting_action": "",
-      "ventilation_action": "",
-      "equipment_schedule": "",
-      "reason": ""
+      "cooling_setpoint_c": 25.5,
+      "heating_setpoint_c": 18.5,
+      "lighting_action": "Reduce lighting by 20% in unoccupied zones",
+      "ventilation_action": "Maintain minimum ventilation rate",
+      "equipment_schedule": "Delay non-essential equipment start by 30 min",
+      "reason": "PMV is \u22120.81 indicating overcooling; raising cooling setpoint from 23.9 to 25\u00b0C reduces chiller load while keeping occupants comfortable. | System flags: PMV=-0.76 is too cold (target \u2265 -0.5); PPD=17.2% exceeds 10.0% threshold; Grid carbon intensity=420 gCO\u2082/kWh \u2014 favour energy saving; Occupancy=2.9% is low \u2014 reduce lighting & HVAC",
+      "flags": [
+        "PMV=-0.76 is too cold (target \u2265 -0.5)",
+        "PPD=17.2% exceeds 10.0% threshold",
+        "Grid carbon intensity=420 gCO\u2082/kWh \u2014 favour energy saving",
+        "Occupancy=2.9% is low \u2014 reduce lighting & HVAC"
+      ]
     }
   }
 ]
