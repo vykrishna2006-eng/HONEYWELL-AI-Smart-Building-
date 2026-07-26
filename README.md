@@ -1,6 +1,6 @@
 # 🏢 AI Smart Building Optimization System
 
-An AI-powered Smart Building Optimization System that combines **EnergyPlus**, **Machine Learning**, **LLMs (Gemini)**, and **Model Context Protocol (ollama)** to optimize building energy consumption while maintaining occupant comfort.
+An AI-powered Smart Building Optimization System that combines **EnergyPlus**, **Machine Learning**, **LLMs **, and **Model Context Protocol (ollama)** to optimize building energy consumption while maintaining occupant comfort.
 
 ---
 
