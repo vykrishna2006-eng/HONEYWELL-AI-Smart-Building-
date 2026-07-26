@@ -1,70 +1,69 @@
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  IconButton,
-  Avatar,
-  Chip,
+  AppBar, Toolbar, Typography, Box,
+  IconButton, Avatar, Chip, Badge,
 } from "@mui/material";
 
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import BusinessIcon from "@mui/icons-material/Business";
+import ApartmentIcon         from "@mui/icons-material/Apartment";
 
 import ThemeToggle from "./ThemeToggle";
+import { DRAWER_WIDTH } from "./Sidebar";
 
 function Navbar() {
-  const today = new Date().toLocaleDateString();
+  const today = new Date().toLocaleDateString("en-GB", {
+    weekday: "short", year: "numeric", month: "short", day: "numeric",
+  });
 
   return (
     <AppBar
       elevation={0}
       sx={{
-        background:
-          "linear-gradient(90deg,#2563EB,#06B6D4)",
-        backdropFilter: "blur(10px)",
+        width: `calc(100% - ${DRAWER_WIDTH}px)`,
+        ml: `${DRAWER_WIDTH}px`,
+        bgcolor: "background.paper",
+        backdropFilter: "blur(12px)",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+        color: "text.primary",
+        boxShadow: "none",
       }}
     >
-      <Toolbar>
-
-        <BusinessIcon sx={{ mr: 2 }} />
+      <Toolbar sx={{ gap: 1.5 }}>
+        <ApartmentIcon sx={{ color: "#2563EB", mr: 1 }} />
 
         <Typography
           variant="h6"
-          sx={{
-            fontWeight: 700,
-            flexGrow: 1,
-          }}
+          sx={{ fontWeight: 700, flexGrow: 1, color: "text.primary" }}
         >
-          AI Smart Building Optimization System
+          AI Smart Building
+          <Typography component="span" variant="body2" sx={{ ml: 1, color: "#64748B", fontWeight: 400 }}>
+            Optimization System
+          </Typography>
         </Typography>
 
         <Chip
           label={today}
-          sx={{
-            mr: 3,
-            bgcolor: "rgba(255,255,255,.2)",
-            color: "white",
-          }}
+          size="small"
+          sx={{ bgcolor: "#EFF6FF", color: "#2563EB", fontWeight: 600, mr: 1 }}
         />
 
-        <IconButton color="inherit">
-          <NotificationsNoneIcon />
-        </IconButton>
+        <Badge badgeContent={3} color="error">
+          <IconButton size="small" sx={{ color: "#64748B" }}>
+            <NotificationsNoneIcon />
+          </IconButton>
+        </Badge>
 
         <ThemeToggle />
 
         <Avatar
           sx={{
-            ml: 2,
-            bgcolor: "#ffffff",
-            color: "#2563EB",
-            fontWeight: 700,
+            width: 34, height: 34,
+            background: "linear-gradient(135deg,#2563EB,#06B6D4)",
+            fontSize: 14, fontWeight: 700, ml: 0.5,
           }}
         >
           A
         </Avatar>
-
       </Toolbar>
     </AppBar>
   );

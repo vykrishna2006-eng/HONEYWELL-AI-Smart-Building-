@@ -1,368 +1,150 @@
 import { useState } from "react";
-
 import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Paper,
-  Stack,
-  Switch,
-  TextField,
-  Typography,
-  Snackbar,
-  Alert,
+  Avatar, Box, Button, Divider, FormControlLabel,
+  Grid, Paper, Stack, Switch, TextField, Typography,
+  Snackbar, Alert,
 } from "@mui/material";
 
-import PersonIcon from "@mui/icons-material/Person";
+import PersonIcon       from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-import ApartmentIcon from "@mui/icons-material/Apartment";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import SaveIcon from "@mui/icons-material/Save";
+import SmartToyIcon     from "@mui/icons-material/SmartToy";
+import ApartmentIcon    from "@mui/icons-material/Apartment";
+import DarkModeIcon     from "@mui/icons-material/DarkMode";
+import SaveIcon         from "@mui/icons-material/Save";
+import SettingsIcon     from "@mui/icons-material/Settings";
 
-import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardLayout  from "../layouts/DashboardLayout";
+import { useThemeMode } from "../contexts/ThemeContext";
 
-function Settings() {
+export default function Settings() {
+  const { toggleTheme, mode } = useThemeMode();
 
   const [settings, setSettings] = useState({
-
-    username: "Administrator",
-
-    email: "admin@smartbuilding.ai",
-
-    building: "Building A",
-
+    username:      "Administrator",
+    email:         "admin@smartbuilding.ai",
+    building:      "Building A",
     notifications: true,
-
-    darkMode: false,
-
     aiSuggestions: true,
-
+    darkMode:      mode === "dark",
   });
 
   const [open, setOpen] = useState(false);
 
   const handleSwitch = (field) => {
-
-    setSettings((prev) => ({
-
-      ...prev,
-
-      [field]: !prev[field],
-
-    }));
-
+    if (field === "darkMode") toggleTheme();
+    setSettings((p) => ({ ...p, [field]: !p[field] }));
   };
 
-  const handleChange = (field, value) => {
-
-    setSettings((prev) => ({
-
-      ...prev,
-
-      [field]: value,
-
-    }));
-
-  };
-
-  const saveSettings = () => {
-
-    // API Call later
-
-    setOpen(true);
-
-  };
+  const handleChange = (field, value) =>
+    setSettings((p) => ({ ...p, [field]: value }));
 
   return (
-
     <DashboardLayout>
-
       {/* Hero */}
-
       <Paper
-        elevation={0}
+        className="fade-in"
         sx={{
-          p: 4,
-          mb: 4,
-          borderRadius: 5,
-          background:
-            "linear-gradient(135deg,#2563EB,#06B6D4)",
+          p: { xs:3, md:4 }, mb:4,
+          background: "linear-gradient(135deg,#2563EB,#06B6D4)",
           color: "white",
         }}
       >
-
-        <Stack
-          direction="row"
-          spacing={3}
-          alignItems="center"
-        >
-
-          <Avatar
-            sx={{
-              width: 70,
-              height: 70,
-              bgcolor: "rgba(255,255,255,.2)",
-            }}
-          >
-            <PersonIcon sx={{ fontSize: 40 }} />
+        <Stack direction="row" spacing={3} alignItems="center">
+          <Avatar sx={{ width:70, height:70, bgcolor:"rgba(255,255,255,.2)" }}>
+            <SettingsIcon sx={{ fontSize:40 }} />
           </Avatar>
-
           <Box>
-
-            <Typography
-              variant="h4"
-              fontWeight={700}
-            >
-              Settings
-            </Typography>
-
-            <Typography>
-              Configure your Smart Building platform.
-            </Typography>
-
+            <Typography variant="h4" fontWeight={800}>Settings</Typography>
+            <Typography sx={{ opacity:0.85 }}>Configure your AI Smart Building platform</Typography>
           </Box>
-
         </Stack>
-
       </Paper>
 
       <Grid container spacing={3}>
-
         {/* Profile */}
-
         <Grid item xs={12} md={6}>
-
-          <Paper
-            elevation={0}
-            sx={{
-              p: 4,
-              borderRadius: 5,
-              border: "1px solid #E2E8F0",
-            }}
-          >
-
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              mb={3}
-            >
-
+          <Paper className="hover-lift fade-in" sx={{ p:4, border:"1px solid #E2E8F0" }}>
+            <Stack direction="row" spacing={2} alignItems="center" mb={3}>
               <PersonIcon color="primary" />
-
-              <Typography
-                variant="h6"
-                fontWeight={700}
-              >
-                User Profile
-              </Typography>
-
+              <Typography variant="h6" fontWeight={700}>User Profile</Typography>
             </Stack>
-
             <TextField
-              fullWidth
-              label="Username"
+              fullWidth label="Username" margin="normal" size="small"
               value={settings.username}
-              onChange={(e)=>
-                handleChange(
-                  "username",
-                  e.target.value
-                )
-              }
-              margin="normal"
+              onChange={(e) => handleChange("username", e.target.value)}
             />
-
             <TextField
-              fullWidth
-              label="Email"
+              fullWidth label="Email Address" margin="normal" size="small"
               value={settings.email}
-              onChange={(e)=>
-                handleChange(
-                  "email",
-                  e.target.value
-                )
-              }
-              margin="normal"
+              onChange={(e) => handleChange("email", e.target.value)}
             />
-
           </Paper>
-
         </Grid>
 
         {/* Building */}
-
         <Grid item xs={12} md={6}>
-
-          <Paper
-            elevation={0}
-            sx={{
-              p:4,
-              borderRadius:5,
-              border:"1px solid #E2E8F0",
-            }}
-          >
-
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              mb={3}
-            >
-
-              <ApartmentIcon color="primary"/>
-
-              <Typography
-                variant="h6"
-                fontWeight={700}
-              >
-                Building
-              </Typography>
-
+          <Paper className="hover-lift fade-in" sx={{ p:4, border:"1px solid #E2E8F0" }}>
+            <Stack direction="row" spacing={2} alignItems="center" mb={3}>
+              <ApartmentIcon color="primary" />
+              <Typography variant="h6" fontWeight={700}>Building</Typography>
             </Stack>
-
             <TextField
-              fullWidth
-              label="Building Name"
+              fullWidth label="Building Name" size="small"
               value={settings.building}
-              onChange={(e)=>
-                handleChange(
-                  "building",
-                  e.target.value
-                )
-              }
+              onChange={(e) => handleChange("building", e.target.value)}
             />
-
           </Paper>
-
         </Grid>
 
         {/* Preferences */}
-
         <Grid item xs={12}>
-
-          <Paper
-            elevation={0}
-            sx={{
-              p:4,
-              borderRadius:5,
-              border:"1px solid #E2E8F0",
-            }}
-          >
-
-            <Typography
-              variant="h6"
-              fontWeight={700}
-            >
-              Preferences
-            </Typography>
-
-            <Divider sx={{my:3}}/>
-
-            <Stack spacing={2}>
-
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.notifications}
-                    onChange={()=>
-                      handleSwitch("notifications")
-                    }
-                  />
-                }
-                label={
-                  <Stack direction="row" spacing={1}>
-                    <NotificationsIcon/>
-                    <Typography>
-                      Enable Notifications
-                    </Typography>
-                  </Stack>
-                }
-              />
-
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.aiSuggestions}
-                    onChange={()=>
-                      handleSwitch("aiSuggestions")
-                    }
-                  />
-                }
-                label={
-                  <Stack direction="row" spacing={1}>
-                    <SmartToyIcon/>
-                    <Typography>
-                      AI Recommendations
-                    </Typography>
-                  </Stack>
-                }
-              />
-
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={settings.darkMode}
-                    onChange={()=>
-                      handleSwitch("darkMode")
-                    }
-                  />
-                }
-                label={
-                  <Stack direction="row" spacing={1}>
-                    <DarkModeIcon/>
-                    <Typography>
-                      Dark Mode
-                    </Typography>
-                  </Stack>
-                }
-              />
-
+          <Paper className="hover-lift fade-in" sx={{ p:4, border:"1px solid #E2E8F0" }}>
+            <Typography variant="h6" fontWeight={700}>Preferences</Typography>
+            <Divider sx={{ my:2.5 }} />
+            <Stack spacing={2.5}>
+              {[
+                { field:"notifications", icon:<NotificationsIcon />, label:"Enable Notifications" },
+                { field:"aiSuggestions",  icon:<SmartToyIcon />,       label:"AI Recommendations"   },
+                { field:"darkMode",       icon:<DarkModeIcon />,        label:"Dark Mode"             },
+              ].map(({ field, icon, label }) => (
+                <FormControlLabel
+                  key={field}
+                  control={
+                    <Switch
+                      checked={settings[field]}
+                      onChange={() => handleSwitch(field)}
+                      color="primary"
+                    />
+                  }
+                  label={
+                    <Stack direction="row" spacing={1.5} alignItems="center">
+                      <Box sx={{ color:"text.secondary" }}>{icon}</Box>
+                      <Typography fontWeight={500}>{label}</Typography>
+                    </Stack>
+                  }
+                />
+              ))}
             </Stack>
-
           </Paper>
-
         </Grid>
-
       </Grid>
 
-      <Box
-        mt={4}
-        display="flex"
-        justifyContent="flex-end"
-      >
-
+      <Box mt={4} display="flex" justifyContent="flex-end">
         <Button
           variant="contained"
           size="large"
-          startIcon={<SaveIcon/>}
-          onClick={saveSettings}
+          startIcon={<SaveIcon />}
+          onClick={() => setOpen(true)}
         >
           Save Settings
         </Button>
-
       </Box>
 
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={()=>setOpen(false)}
-      >
-        <Alert
-          severity="success"
-          variant="filled"
-        >
-          Settings Saved Successfully
+      <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
+        <Alert severity="success" variant="filled" sx={{ borderRadius: 3 }}>
+          Settings saved successfully
         </Alert>
       </Snackbar>
-
     </DashboardLayout>
-
   );
-
 }
-
-export default Settings;
