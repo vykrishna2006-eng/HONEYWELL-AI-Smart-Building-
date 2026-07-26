@@ -1,17 +1,13 @@
-from google import genai
+import requests
 import traceback
 
-from llm.config import GEMINI_API_KEY, GEMINI_MODEL
+from llm.config import OLLAMA_HOST, OLLAMA_MODEL
 from llm.prompt import SYSTEM_PROMPT
 
-client = genai.Client(api_key=GEMINI_API_KEY)
 
-
-def generate(user_prompt: str):
+def generate(user_prompt: str) -> str:
 
     try:
-
-        print("GENERATOR START")
 
         full_prompt = f"""
 {SYSTEM_PROMPT}
@@ -19,14 +15,19 @@ def generate(user_prompt: str):
 {user_prompt}
 """
 
-        response = client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=full_prompt,
+        response = requests.post(
+            f"{OLLAMA_HOST}/api/generate",
+            json={
+                "model": OLLAMA_MODEL,
+                "prompt": full_prompt,
+                "stream": False,
+            },
+            timeout=120,
         )
 
-        print("GENERATOR END")
+        response.raise_for_status()
 
-        return response.text
+        return response.json()["response"]
 
     except Exception:
         traceback.print_exc()

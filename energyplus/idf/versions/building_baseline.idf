@@ -3442,6 +3442,35 @@
   Output:Variable,*,Pump Mass Flow Rate,hourly;
 
   Output:Variable,*,Pump Outlet Temperature,hourly;
+  Output:Variable,
+    *,
+    Zone Air Relative Humidity,
+    Hourly;
+
+Output:Variable,
+    *,
+    Zone Mean Radiant Temperature,
+    Hourly;
+
+Output:Variable,
+    *,
+    People Occupant Count,
+    Hourly;
+
+Output:Variable,
+    *,
+    Site Wind Speed,
+    Hourly;
+
+Output:Variable,
+    *,
+    Site Direct Solar Radiation Rate per Area,
+    Hourly;
+
+Output:Variable,
+    *,
+    Site Diffuse Solar Radiation Rate per Area,
+    Hourly;
 
   Output:VariableDictionary,Regular;
 

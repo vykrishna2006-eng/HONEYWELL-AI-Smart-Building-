@@ -6,27 +6,57 @@
       "total_heating_kwh": 2932.35,
       "total_energy_kwh": 6564.23
     },
+    "comfort": {
+      "pmv": -0.81,
+      "ppd": 18.8
+    },
+    "iaq": {
+      "co2": null,
+      "iaq": "Unknown"
+    },
+    "occupancy": 2.94,
+    "outdoor_temperature": 13.79,
+    "peak_demand": 3.79,
+    "carbon_intensity": 420,
     "applied_cooling_setpoint_c": "Baseline",
     "applied_heating_setpoint_c": "Baseline",
     "decision": {
-      "cooling_setpoint_c": 24.0,
-      "heating_setpoint_c": 20.0,
-      "reason": "Widen the thermal comfort deadband to 20.0\u00b0C heating and 24.0\u00b0C cooling to significantly reduce both space heating demand and premature VAV cooling loads."
+      "cooling_setpoint_c": 21.75,
+      "heating_setpoint_c": 4.5,
+      "lighting_action": "...",
+      "ventilation_action": "...",
+      "equipment_schedule": "...",
+      "reason": "..."
     }
   },
   {
     "iteration": 2,
     "energy": {
-      "total_cooling_kwh": 3631.88,
-      "total_heating_kwh": 2932.35,
-      "total_energy_kwh": 6564.23
+      "total_cooling_kwh": 5646.3,
+      "total_heating_kwh": 871.86,
+      "total_energy_kwh": 6518.17
     },
-    "applied_cooling_setpoint_c": 24.0,
-    "applied_heating_setpoint_c": 20.0,
+    "comfort": {
+      "pmv": -0.94,
+      "ppd": 23.8
+    },
+    "iaq": {
+      "co2": null,
+      "iaq": "Unknown"
+    },
+    "occupancy": 2.94,
+    "outdoor_temperature": 13.79,
+    "peak_demand": 4.59,
+    "carbon_intensity": 420,
+    "applied_cooling_setpoint_c": 21.75,
+    "applied_heating_setpoint_c": 4.5,
     "decision": {
-      "cooling_setpoint_c": 24.5,
-      "heating_setpoint_c": 20.0,
-      "reason": "Widening the thermostat deadband by raising the cooling setpoint to 24.5\u00b0C and lowering the heating setpoint to 20.0\u00b0C significantly reduces chiller and boiler energy consumption while maintaining comfortable conditions within allowable limits."
+      "cooling_setpoint_c": 16.0,
+      "heating_setpoint_c": 21.26329354,
+      "lighting_action": "",
+      "ventilation_action": "",
+      "equipment_schedule": "",
+      "reason": ""
     }
   }
 ]
