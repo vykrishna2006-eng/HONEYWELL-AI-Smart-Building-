@@ -3,8 +3,8 @@
  input file:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\output\eplusout.eso
  output file:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\output\eplusout.csv
  getting all vars from:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\output\eplusout.eso
-  number variables requested for output=          93
- ReadVars Run Time=00hr 00min  8.16sec
+  number variables requested for output=          73
+ ReadVars Run Time=00hr 00min 17.61sec
  ReadVarsESO program completed successfully.
  ReadVarsESO
  processing:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\idf\building.mvi
@@ -12,5 +12,5 @@
  output file:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\output\eplusmtr.csv
  getting all vars from:C:\Users\steph\OneDrive\Desktop\AI-Smart-Building\energyplus\output\eplusout.mtr
   number variables requested for output=          20
- ReadVars Run Time=00hr 00min  0.02sec
+ ReadVars Run Time=00hr 00min  0.03sec
  ReadVarsESO program completed successfully.

@@ -32,6 +32,10 @@ from backend.routes.simulation_routes import (
     router as simulation_router,
 )
 
+from backend.routes.dashboard_routes import (
+    router as dashboard_router,
+)
+
 from backend.routes.llm_routes import router as llm_router
 
 api_router = APIRouter()
@@ -44,4 +48,5 @@ api_router.include_router(recommendation_router)
 api_router.include_router(ml_prediction_router)
 api_router.include_router(analytics_router)
 api_router.include_router(simulation_router)
+api_router.include_router(dashboard_router)
 api_router.include_router(llm_router)

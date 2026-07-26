@@ -41,10 +41,10 @@ export default function EnergyChart() {
         const rows = Array.isArray(r.data) ? r.data : [];
         setData(
           rows.map((row) => ({
-            iteration:    row.iteration,
-            energy:       Number(row.energy_kwh)    || 0,
-            cooling:      Number(row.cooling_kwh)   || 0,
-            heating:      Number(row.heating_kwh)   || 0,
+            iteration: row.iteration,
+            energy:    Number(row.energy_kwh)   || 0,
+            cooling:   Number(row.cooling_kwh)  || 0,
+            heating:   Number(row.heating_kwh)  || 0,
           }))
         );
       })
